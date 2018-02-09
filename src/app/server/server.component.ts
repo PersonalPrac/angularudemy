@@ -8,5 +8,10 @@ import { Component } from "@angular/core";
     templateUrl: './server.component.html'    
 })
 export class ServerComponent{
+    serverId: number = 10;
+    status: string = "offline";
 
+    getServerStatus(): string{
+        return this.status;
+    }
 }
