@@ -1,6 +1,32 @@
-<button class="btn btn-primary" disabled="!allowNewServer">Add Server</button>
+<label>Server Name</label>
+
+<!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)"/> -->  <!--*********** Event Binding -->
+
+<input type="text" class="form-control" [(ngModel)]="serverName"/>  <!--*********** Two way Data Binding -->
+<!-- <p>{{ serverName }}</p> -->
+
+<!-- boostrap styles: btn btn-primary -->
+<button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onServerCreate()">Add Server</button> <!-- Property Binding Example [Property] = "data" -->
+<!-- <p [innerText]="allowNewServer"></p> -->
+<!-- <p>{{ serverCreationStatus }}</p> -->
+
+
+<p *ngIf="serverCreated">Server was created, server name is: {{ serverName }}</p>  <!-- NG IF example -->
+
+
+<!-- 
+    NG IF Else Example
+    <p *ngIf="serverCreated; else noServer">Server was created, server name is: {{ serverName }}</p>
+
+<ng-template #noServer>
+    <p>
+        NO server created.
+    </p>
+</ng-template>
+ -->
 <app-server></app-server>
 <app-server></app-server>
-<p>
+
+<!-- <p>
     servers works!
-</p>
+</p> -->

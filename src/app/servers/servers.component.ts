@@ -2,18 +2,22 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-servers',     // Typically use this stle for component selector
-  //selector: '[app-servers]', -- Select by app-servers as attribute selector
-  //selector:'.app-servers',     // Select by app-servers as CSS class attribute value selector
+  // selector: '[app-servers]', -- Select by app-servers as attribute selector
+  // selector:'.app-servers',     // Select by app-servers as CSS class attribute value selector
   /* template: `
-              <app-server></app-server> 
+              <app-server></app-server>
               <app-server></app-server>`,
    */
   templateUrl: './servers.component.html',
   styleUrls: ['./servers.component.css']
 })
 export class ServersComponent implements OnInit {
-  allowNewServer: boolean = false;
-  constructor() { 
+  allowNewServer = false;
+  serverCreationStatus = 'NO server was created';
+  serverName = 'Inital Server';
+  serverCreated = false;
+
+  constructor() {
     setTimeout(() => {
       this.allowNewServer = true;
     }, 2000);
@@ -22,4 +26,12 @@ export class ServersComponent implements OnInit {
   ngOnInit() {
   }
 
+  onServerCreate() {
+    this.serverCreated = true;
+    this.serverCreationStatus = 'server was created';
+  }
+
+  onUpdateServerName(event: Event) {
+    this.serverName = (<HTMLInputElement>event.target).value;
+  }
 }
